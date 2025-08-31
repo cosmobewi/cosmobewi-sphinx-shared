@@ -20,4 +20,21 @@ Add this repository as a submodule inside your project’s `docs/` folder:
 
 ```bash
 git submodule add -b main \
-  https://github.com/cosmobewi/cosmobewi-sphinx-shared.git docs/iobewi-shared
+  https://github.com/cosmobewi/cosmobewi-sphinx-shared.git docs/cosmobewi-shared
+```
+
+### Minimum `conf.py`
+
+In your project’s `docs/conf.py`, import the shared configuration and enable local overrides:
+
+```python
+# docs/conf.py
+from pathlib import Path
+import sys
+sys.path.append(str(Path(__file__).resolve().parent / "cosmobewi-shared"))
+
+from conf_shared import *     # shared theme & config
+include_local_paths(__file__) # enable local overrides
+```
+
+This way, you inherit the **shared theme & settings** but can still add project-specific extensions, templates, or static files if needed.
