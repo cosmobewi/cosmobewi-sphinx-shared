@@ -4,9 +4,8 @@ from datetime import date
 from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
-SHARED_DIR = BASE / "_shared"
-SHARED_TEMPLATES = SHARED_DIR / "_templates"
-SHARED_STATIC = SHARED_DIR / "_static"
+SHARED_TEMPLATES = BASE / "_templates"
+SHARED_STATIC = BASE / "_static"
 
 project = "CosmoBEWI"
 author = "Lionel Orcil — Édité et diffusé par IOBEWI"
