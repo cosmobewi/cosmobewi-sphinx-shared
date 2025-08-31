@@ -20,4 +20,4 @@ Add this repository as a submodule inside your project’s `docs/` folder:
 
 ```bash
 git submodule add -b main \
-  git@github.com:cosmobewi/cosmobewi-sphinx-shared.git docs/iobewi-shared
+  https://github.com/cosmobewi/cosmobewi-sphinx-shared.git docs/iobewi-shared
