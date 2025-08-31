@@ -261,6 +261,20 @@ html, body, .wy-body-for-nav { background: var(--bg); color: var(--ink); }
 }
 .wy-menu-vertical li{ border-color: var(--side-border); }
 
+/* Sommaire (sidebar) : enlever le fond clair des sous-menus */
+.wy-menu-vertical .current > ul,
+.wy-menu-vertical ul ul{
+  background: var(--side) !important;   /* ou transparent */
+}
+
+/* Et remettre texte normal sur les liens de sous-niveaux */
+.wy-menu-vertical .current > ul a,
+.wy-menu-vertical ul ul a{
+  color: var(--side-text) !important;
+  opacity: 1 !important;
+}
+
+
 /* ========================================================
    Footer aligné (dark contenu)
    ======================================================== */
