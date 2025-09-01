@@ -1,499 +1,410 @@
 /* =========================================================
-   IOBEWI — COSMOBEWI (Full Dark neutre élégant)
-   RTD-like theme — tout piloté par variables
+   IOBEWI — COSMOBEWI (Dark, RTD-like) — FULL VARIABLES
    ========================================================= */
 
-/* ------------------ Variables globales ------------------ */
+/* ------------------ Variables (palette + UI) ------------------ */
 :root{
-  /* Couleurs — fond & surfaces (dark) */
-  --bg:#0f1115;
-  --surface:#13161b;
-  --surface-2:#171b21;
-  --border:#2a2f36;
+  /* ===== VS Code Dark+ — Palette ===== */
+  /* Fond & surfaces */
+  --bg:#1e1e1e;            /* editor background */
+  --content-bg:#1e1e1e;    /* zone principale = même ton VS Code */
+  --content-border:#3c3c3c;
+  --surface:#252526;       /* blocs (tables, admonitions) */
+  --surface-2:#2a2d2e;     /* hover doux / contraste */
+  --table-head:#2a2d2e;
+  --table-row:#1f1f1f;
 
   /* Texte */
-  --ink:#f3f4f6;         /* texte principal : quasi blanc mais pas pur (#f3f4f6 = slate-50/100) */
-  --ink-soft:#d1d5db;    /* secondaire : gris clair lisible */
-  --ink-muted:#9ca3af;   /* meta/breadcrumbs : plus sombre que avant, mieux visible */
+  --ink:#d4d4d4;           /* editor foreground */
+  --ink-soft:#cccccc;
+  --ink-soft-rgb:204,204,204;
+  --ink-muted:#9da1a6;
 
-  /* Accents neutres (gris chauds) */
-  --accent:#a3a3a3;          /* repère actif (bordure gauche menu) */
-  --accent-strong:#ffffff;   /* texte actif/hover */
+  /* Liens & accents VS Code */
+  --link:#3794ff;          /* textLink.foreground */
+  --accent:#858585;        /* neutre (repère menu) */
+  --accent-strong:#ffffff;
 
-  /* Code & maths */
-  --code-bg:#0f141a;
-  --code-inline:#1a1f26;
-
-  /* Tableaux */
-  --table-head:#1b2027;
-  --table-row:#12161b;
-
-  /* Sidebar */
-  --side:#1a1a1d;
-  --side-hover:#2b2b31;
-  --side-active:#2b2b31;
-  --side-border:#2a2a2e;
+  /* Sidebar (explorer) */
+  --side:#252526;          /* sideBar.background */
+  --side-hover:#2a2d2e;    /* list.hoverBackground */
+  --side-active:#37373d;   /* list.activeSelectionBackground */
+  --side-border:#3c3c3c;   /* sideBar border/separators */
   --side-text:#e5e7eb;
   --side-text-strong:#ffffff;
-  --side-placeholder:#9ca3af;
+  --side-placeholder:#9da1a6;
 
-  /* Focus & sélection */
-  --focus:#9ca3af;
-  --selection: rgba(148,163,184,.20);
+  /* Code */
+  --code-bg:#1e1e1e;       /* editor background */
+  --code-inline:#2d2d2d;   /* inline code chip */
 
-  /* Liens (soulignement) */
-  --link-underline-opacity:.35;
+  /* Admonitions (infos/avert.) */
+  --admon-note:#3794ff;    /* info bleu VS Code */
+  --admon-warn:#cca700;    /* warning jaune VS Code */
 
-  /* Dimensions & layout */
-  --content-max:1080px;
-  --container-padding: 16px;
+  /* Boutons (style VS Code) */
+  --btn-bg:#0e639c;        /* button.background */
+  --btn-bg-hover:#1177bb;  /* button.hoverBackground */
+  --btn-text:#ffffff;
 
-  /* Rayon & bordures */
-  --radius-sm:4px;
-  --radius-md:6px;
-  --radius-lg:18px;
-  --radius-full:999px;
-  --border-w:1px;
-  --menu-border-left:3px;
+  /* CTA (Tipeee/Ko-fi) – neutre VS Code */
+  --cta-border:#323842;
+  --cta-bg:#323842;
+  --cta-text:#ffffff;
 
-  /* Ombres */
-  --shadow-0: none;
-  --shadow-1: 0 0 8px rgba(0,0,0,.20);
-  --shadow-focus: 0 0 0 3px rgba(148,163,184,.15);
+  /* Sélection / focus */
+  --selection:rgba(38,79,120,.35); /* selection (bleu VS Code adouci) */
+  --focus-ring:rgba(0,127,212,.35);/* focusBorder */
 
-  /* Transitions */
-  --ease: cubic-bezier(.2,.6,.2,1);
-  --t-fast:.12s;
-  --t-med:.20s;
+  /* Divers */
+  --link-underline-opacity:.45;
 
-  /* Typographie (échelle légère) */
-  --font-ui: system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
-  --font-code: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-  --font-accent: 'Nunito','Quicksand', var(--font-ui);
+  /* Layout & rayons */
+  --content-max:1080px; --container-padding:16px;
+  --radius-sm:4px; --radius-md:6px; --radius-lg:12px; --radius-full:999px;
+  --border-w:1px; --menu-border-left:3px;
 
-  /* Tailles d’éléments */
-  --avatar-size:180px;
-  --btn-h:48px;
-  --btn-px:20px;
-  --btn-fs:16px;
+  /* Ombres & transitions */
+  --shadow-0:none;
+  --shadow-1:0 0 8px rgba(0,0,0,.20);
+  --shadow-strong:0 6px 24px rgba(0,0,0,.30);
+  --ease:cubic-bezier(.2,.6,.2,1);
+  --t-fast:.12s; --t-med:.20s;
 
-  /* Z-index */
+  /* Typo & tailles (inchangées) */
+  --font-ui:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;
+  --font-code:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;
+  --font-accent:'Nunito','Quicksand',var(--font-ui);
+  --avatar-size:180px; --btn-h:46px; --btn-px:20px; --btn-fs:16px;
   --z-floating:500;
 }
 
-/* ------------------ Fond global & container -------------- */
-html, body, .wy-body-for-nav { background: var(--bg); color: var(--ink); }
-.wy-nav-content { max-width: var(--content-max); background: transparent; }
+/* ------------------ Fond global & container ------------------ */
+html,body,.wy-body-for-nav,.wy-grid-for-nav,.wy-nav-content-wrap{ background:var(--bg); color:var(--ink); }
 
-/* ------------------ Contenu (typographie) ---------------- */
-.rst-content { color: var(--ink); }
-.rst-content p, .rst-content li { color: var(--ink); }
-.rst-content strong { color: var(--ink); font-weight: 700; }
-.rst-content em { color: var(--ink-soft); }
-
-.rst-content h1, .rst-content h2, .rst-content h3 {
-  color: var(--ink);
-  letter-spacing: .1px;
-  font-family: var(--font-ui);
-}
-.rst-content h1 { font-weight: 800; margin-top: .4rem; }
-.rst-content h2 { font-weight: 700; margin-top: 1.2rem; }
-.rst-content h3 { font-weight: 600; }
-
-/* ------------------ Liens ------------------ */
-.rst-content a, .rst-content a.reference, .rst-content a.external {
-  color: var(--ink-soft);
-  text-decoration: underline;
-  text-decoration-color: rgba(203,213,225, var(--link-underline-opacity));
-  text-underline-offset: 2px;
-  transition: color var(--t-med) var(--ease), text-decoration-color var(--t-med) var(--ease);
-}
-.rst-content a:hover {
-  color: var(--accent-strong);
-  text-decoration-color: var(--accent-strong);
+/* Contenu principal (carte sobre) */
+.wy-nav-content{
+  max-width:var(--content-max);
+  background: var(--content-bg) !important;
+  border: 1px solid var(--content-border);
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: var(--shadow-strong);
 }
 
-/* ------------------ Breadcrumbs ------------------ */
-.wy-breadcrumbs, .wy-breadcrumbs a { color: var(--ink-muted); }
-.wy-breadcrumbs a:hover { color: var(--ink); }
+/* ------------------ Typo & liens ------------------ */
+.rst-content, .rst-content p, .rst-content li{ color:var(--ink); line-height:1.6; }
+.rst-content strong{ font-weight:700; }
+.rst-content em{ color:var(--ink-soft); }
 
-/* ------------------ Séparateurs / listes --------------- */
-.rst-content hr {
-  border: 0;
-  height: 1px;
-  background: var(--border);
-  margin: 1.2rem 0;
+.rst-content h1, .rst-content h2, .rst-content h3{
+  color:var(--ink); letter-spacing:.1px; font-family:var(--font-ui);
 }
-.rst-content ul>li { margin: .25rem 0; }
+.rst-content h1{ font-weight:800; margin-top:.4rem; }
+.rst-content h2{ font-weight:700; margin-top:1.2rem; }
+.rst-content h3{ font-weight:600; }
 
-/* ------------------ Admonitions (notes/avert.) --------- */
-.rst-content .admonition, .rst-content .note, .rst-content .warning {
-  background: var(--surface);
-  border: var(--border-w) solid var(--border);
-  border-left-width: 4px;
-  border-radius: var(--radius-md);
+.rst-content a, .rst-content a.reference, .rst-content a.external{
+  color:var(--ink-soft);
+  text-decoration:underline;
+  text-decoration-color: rgba(var(--ink-soft-rgb), var(--link-underline-opacity));
+  text-underline-offset:2px;
+  transition:color var(--t-med) var(--ease), text-decoration-color var(--t-med) var(--ease);
 }
-.rst-content .note, .rst-content .admonition.note   { border-left-color: #a8a29e; } /* gris chaud */
-.rst-content .warning, .rst-content .admonition.warning { border-left-color: #f59e0b; } /* doré doux */
-.rst-content .admonition p.admonition-title { color: var(--ink); }
+.rst-content a:hover{ color:var(--accent-strong); text-decoration-color:var(--accent-strong); }
+
+.wy-breadcrumbs, .wy-breadcrumbs a{ color:var(--ink-muted); }
+.wy-breadcrumbs a:hover{ color:var(--ink); }
+
+.rst-content hr{ border:0; height:1px; background:var(--border); margin:1.2rem 0; }
+.rst-content ul>li{ margin:.25rem 0; }
+
+/* ------------------ Admonitions ------------------ */
+.rst-content .admonition, .rst-content .note, .rst-content .warning{
+  background:var(--surface);
+  border:0; border-left:4px solid transparent; border-radius:var(--radius-md);
+}
+.rst-content .note{    border-left-color: var(--admon-note); }
+.rst-content .warning{ border-left-color: var(--admon-warn); }
+.rst-content .admonition p.admonition-title{ color:var(--ink); }
 
 /* ------------------ Code ------------------ */
-.highlight, .rst-content pre {
-  background: var(--code-bg);
-  border: var(--border-w) solid var(--border);
-  border-radius: var(--radius-md);
-  color: var(--ink);
-  font-family: var(--font-code);
+.highlight, .rst-content pre{
+  background:var(--code-bg);
+  border:0; border-radius:var(--radius-md);
+  color:var(--ink); font-family:var(--font-code);
 }
-.rst-content code.literal {
-  background: var(--code-inline);
-  color: var(--ink);
-  border: var(--border-w) solid var(--border);
-  border-radius: var(--radius-sm);
-  padding: .05em .3em;
-  font-family: var(--font-code);
+.rst-content code.literal{
+  background:var(--code-inline);
+  color:var(--ink);
+  border:0; border-radius:var(--radius-sm);
+  padding:.05em .3em; font-family:var(--font-code);
 }
 
 /* ------------------ Maths ------------------ */
-.math, .math .katex { color: var(--ink); font-size: 105%; line-height: 1.35; }
-.rst-content .math .katex-display { margin: .8rem 0 1rem; }
+.math, .math .katex{ color:var(--ink); font-size:105%; line-height:1.35; }
+.rst-content .math .katex-display{ margin:.8rem 0 1rem; }
 
 /* ------------------ Tableaux ------------------ */
-.rst-content table.docutils {
-  border: var(--border-w) solid var(--border);
-  background: var(--surface);
-  border-radius: var(--radius-md);
-  overflow: hidden;
+.rst-content table.docutils{
+  border:0; background:var(--surface); border-radius:var(--radius-md); overflow:hidden;
 }
-.rst-content table.docutils th {
-  background: var(--table-head);
-  color: var(--ink);
-  font-weight: 600;
+.rst-content table.docutils th{
+  background:var(--table-head); color:var(--ink); font-weight:600;
 }
-.rst-content table.docutils td,
-.rst-content table.docutils th { border-color: var(--border); }
-.rst-content table.docutils tbody tr:nth-child(odd) { background: var(--table-row); }
+.rst-content table.docutils td, .rst-content table.docutils th{ border-color:transparent; }
+.rst-content table.docutils tbody tr:nth-child(odd){ background:var(--table-row); }
 
-/* ------------------ Boutons Prev/Next ------------------ */
+/* ------------------ Boutons ------------------ */
 .btn{
-  border: var(--border-w) solid var(--ink-muted) !important;
-  color: var(--ink-muted) !important;
-  background: transparent !important;
-  transition: background var(--t-med) var(--ease),
-              color var(--t-med) var(--ease),
-              border-color var(--t-med) var(--ease),
-              box-shadow var(--t-med) var(--ease);
-  height: var(--btn-h);
-  padding: 0 var(--btn-px);
-  border-radius: var(--radius-full);
-  font-family: var(--font-ui);
-  font-size: var(--btn-fs);
+  background:var(--btn-bg);
+  color:var(--btn-text);
+  border:0; border-radius:var(--radius-lg);
+  padding:8px 16px; font-weight:600; font-family:var(--font-ui);
+  transition:background var(--t-med) var(--ease), color var(--t-med) var(--ease);
 }
-.btn:hover{
-  background: var(--surface-2) !important;
-  color: var(--ink) !important;
-  border-color: var(--ink) !important;
-  box-shadow: var(--shadow-focus);
-}
+.btn:hover{ background:var(--btn-bg-hover); color:var(--btn-text); }
 
-/* ========================================================
-   Sidebar sombre
-   ======================================================== */
-.wy-nav-side{
-  background: var(--side) !important;
-  border-right: var(--border-w) solid var(--side-border);
-  color: var(--side-text);
-}
-
-/* Logo avatar (cercle) + wrapper neutre */
-.wy-side-nav-search{ background: transparent !important; }
-.wy-side-nav-search > a:first-child{
-  background: transparent !important;
-  padding: 0 !important;
+/* RTD "Précédent / Suivant" */
+.rst-footer-buttons .btn,
+.rst-footer-buttons .btn-neutral,
+.btn-neutral{
+  background: var(--btn-bg) !important;
+  color: var(--btn-text) !important;
   border: 0 !important;
-  box-shadow: var(--shadow-0) !important;
-  display: flex;
-  justify-content: center;
+  border-radius: var(--radius-sm) !important;
+  box-shadow: none !important;
+  transition: background var(--t-med) var(--ease);
 }
-.wy-side-nav-search img{
-  display:block;
-  width: var(--avatar-size) !important;
-  height: var(--avatar-size) !important;
-  max-width:none !important;
-  object-fit:cover !important;
-  border-radius:50% !important;
-  overflow:hidden;
-  margin:12px auto 10px !important;
-  border:2px solid var(--side-border);
-  box-shadow: var(--shadow-1);
-  transition: transform var(--t-fast) var(--ease);
+.rst-footer-buttons .btn:hover,
+.rst-footer-buttons .btn-neutral:hover,
+.btn-neutral:hover{
+  background: var(--btn-bg-hover) !important;
 }
-.wy-side-nav-search img:hover{ transform:scale(1.01); }
+/* Focus/click sobre */
+.rst-footer-buttons .btn:focus,
+.rst-footer-buttons .btn-neutral:focus,
+.btn:focus,
+.btn-neutral:focus,
+.rst-footer-buttons .btn:active,
+.rst-footer-buttons .btn-neutral:active,
+.btn:active,
+.btn-neutral:active{
+  outline: 2px solid var(--focus-ring) !important;
+  outline-offset: 2px !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
 
-/* Recherche (dark) */
-.wy-side-nav-search input[type="text"]{
-  background: var(--side-hover);
-  color: var(--side-text);
-  border: var(--border-w) solid var(--side-border);
-  border-radius: var(--radius-lg);
-  padding: 8px 12px;
-  box-shadow: var(--shadow-0);
-  font-family: var(--font-ui);
+/* ------------------ Sidebar ------------------ */
+.wy-nav-side{
+  background:var(--side);
+  border-right:0; color:var(--side-text);
 }
-.wy-side-nav-search input::placeholder{ color: var(--side-placeholder); }
+.wy-side-nav-search{ background:transparent; }
 
-/* Menu (liens / hover / actif) */
-.wy-menu-vertical a{
-  color: var(--side-text) !important;
+
+/* Le <a> qui contient le <img> devient le masque circulaire */
+.wy-side-nav-search > a:first-child{
+  position: relative;
+  display: block;
+  width: var(--avatar-size);
+  height: var(--avatar-size);
+  margin: 12px auto 10px;
+  padding: 0 !important;
+  line-height: 0 !important;       /* supprime l’espace inline */
+  border-radius:  var(--radius-lg) !important;
+  overflow: hidden !important;      /* masque circulaire */
+  border: 0px solid var(--avatar-ring); /* anneau propre (pas d’inset/gap) */
+  box-shadow: none !important;
   background: transparent !important;
-  transition: background var(--t-med) var(--ease), color var(--t-med) var(--ease), border-color var(--t-med) var(--ease);
 }
-.wy-menu-vertical a:hover{
+
+/* L’image remplit le masque, sans bord ni arrondi (le parent masque déjà) */
+.wy-side-nav-search > a:first-child img,
+.wy-side-nav-search img.logo{
+  position: absolute;               /* couvre le parent */
+  inset: 0;                          /* top/right/bottom/left:0 */
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;      /* pas de bandes noires */
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;              /* annihile tout border hérité */
+  border-radius: 0 !important;       /* le parent fait déjà le masque */
+}
+
+/* Anneau discret autour du cercle (optionnel) */
+.wy-side-nav-search > a:first-child::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px var(--avatar-ring) inset;
+  pointer-events: none;
+}
+
+/* Petit hover subtil (optionnel) */
+.wy-side-nav-search > a:first-child:hover img{ transform: scale(1.01); transition: transform .12s var(--ease); }
+
+
+.wy-side-nav-search input[type="text"]{
+  box-shadow: none !important;
+  border: 1px solid var(--side-border) !important;
+  border-radius: var(--radius-sm);
   background: var(--side-hover) !important;
-  color: var(--side-text-strong) !important;
-}
-.wy-menu-vertical li.current> a,
-.wy-menu-vertical li.toctree-l1.current> a{
-  background: var(--side-active) !important;
-  color: var(--side-text-strong) !important;
-  font-weight: 600;
-  border-left: var(--menu-border-left) solid var(--accent);
-}
-.wy-menu-vertical li{ border-color: var(--side-border); }
-
-/* Sommaire (sidebar) : enlever le fond clair des sous-menus */
-.wy-menu-vertical .current > ul,
-.wy-menu-vertical ul ul{
-  background: var(--side) !important;   /* ou transparent */
+  color: var(--side-text);
 }
 
-/* Et remettre texte normal sur les liens de sous-niveaux */
+.wy-side-nav-search input::placeholder{
+  color: var(--side-placeholder);
+}
+
+.wy-side-nav-search input::placeholder{ color:var(--side-placeholder); }
+
+/* Menu clean */
+.wy-menu-vertical li,
+.wy-menu-vertical li.current,
+.wy-menu-vertical .toctree-l1,
+.wy-menu-vertical .toctree-l2,
+.wy-menu-vertical .toctree-l3{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+.wy-menu-vertical li > ul,
+.wy-menu-vertical .current > ul{
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0; padding: 0;
+}
+.wy-menu-vertical a,
+.wy-menu-vertical a:link,
+.wy-menu-vertical a:visited,
 .wy-menu-vertical .current > ul a,
 .wy-menu-vertical ul ul a{
   color: var(--side-text) !important;
   opacity: 1 !important;
 }
+.wy-menu-vertical a:hover{
+  background: var(--side-hover) !important;
+  color: var(--side-text-strong) !important;
+}
+.wy-menu-vertical li.current > a,
+.wy-menu-vertical li.toctree-l1.current > a{
+  background: var(--side-active) !important;
+  color: var(--side-text-strong) !important;
+  font-weight: 600;
+  border-left: var(--menu-border-left) solid var(--accent) !important;
+}
+.wy-menu-vertical a:focus{
+  outline: 2px solid var(--focus-ring) !important;
+  outline-offset: 2px !important;
+}
 
+/* Séparateur vertical supprimé */
+.wy-nav-content-wrap{ border-left:0 !important; box-shadow:none !important; background-image:none !important; }
+.wy-nav-content-wrap::before, .wy-nav-content-wrap::after{ content:none !important; display:none !important; }
 
-/* ========================================================
-   Footer aligné (dark contenu)
-   ======================================================== */
+/* === SUPPRESSION TOTALE DES LIGNES DANS LE MENU & ENTRE SIDEBAR / CONTENU === */
+
+/* 1) Séparateur vertical entre sidebar et contenu */
+.wy-nav-content-wrap{
+  border-left: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;
+}
+.wy-nav-content-wrap::before,
+.wy-nav-content-wrap::after{
+  content: none !important;
+  display: none !important;
+}
+
+/* 2) Bordures/traits sur les items de menu */
+.wy-menu-vertical li,
+.wy-menu-vertical li a,
+.wy-menu-vertical li > a{
+  border: 0 !important;
+  box-shadow: none !important;
+  background-image: none !important;  /* RTD ajoute parfois un gradient fin */
+}
+
+/* 3) Traits de structure sur les sous-niveaux (L2/L3) */
+.wy-menu-vertical ul{ border: 0 !important; box-shadow: none !important; }
+.wy-menu-vertical ul ul{
+  border-left: 0 !important;
+  margin-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* 4) Pseudo-éléments qui dessinent encore des filets */
+.wy-menu-vertical li::before,
+.wy-menu-vertical li::after,
+.wy-menu-vertical ul::before,
+.wy-menu-vertical ul::after,
+.wy-menu-vertical a::before,
+.wy-menu-vertical a::after{
+  content: none !important;
+  border: 0 !important;
+}
+
+/* 5) (optionnel) on s’assure qu’aucun <hr> ne traîne */
+.wy-menu-vertical hr{ display: none !important; height: 0 !important; }
+
+/* ------------------ Footer ------------------ */
 .footer-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:1rem;
-  flex-wrap:wrap;
-  margin-top:1rem;
-  color: var(--ink-muted);
-  font-size:90%;
+  display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap;
+  margin-top:1rem; color:var(--ink-muted); font-size:90%;
 }
-
-.cc-by-footer {
-  text-align: right;
-}
-
-.cc-by-footer img{ 
-  height:22px; 
-  width:auto; 
-  vertical-align:middle; 
-  margin-left:.35em; 
-}
-@media (max-width:780px){
-  .footer-row{ justify-content:center; text-align:center; }
-}
+.cc-by-footer{ text-align:right; }
+.cc-by-footer img{ height:22px; width:auto; vertical-align:middle; margin-left:.35em; }
+@media (max-width:780px){ .footer-row{ justify-content:center; text-align:center; } }
 
 /* ------------------ Sélection & focus ------------------ */
-::selection{ background: var(--selection); }
-a:focus, input:focus, button:focus{
-  outline:2px solid var(--focus);
-  outline-offset:2px;
-}
+::selection{ background:var(--selection); }
+a:focus, input:focus, button:focus{ outline:2px solid var(--focus-ring); outline-offset:2px; box-shadow:none; }
 
 /* ------------------ Petites retouches ------------------ */
-.rst-content .section { background: transparent; } /* évite panneaux clairs inattendus */
+.rst-content .section{ background:transparent; }
 
-/* ========================================================
-   Bouton de soutien (Tipeee / Ko-fi / etc.)
-   ======================================================== */
-
-/* Conteneur flottant (coin bas gauche par défaut) */
+/* ------------------ Bouton de soutien (Tipeee / Ko-fi) ------------------ */
 .tipeeechat-container-wrap{
-  position: fixed;
-  bottom: 76px;
-  left: 16px;
-  z-index: var(--z-floating) !important;
+  position:fixed; bottom: 16px; left:200px; z-index:var(--z-floating);
 }
-
-/* Bouton rond + libellé */
 .tipeeechat-button{
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  height: var(--btn-h);
-  padding: 0 var(--btn-px);
-  border-radius: var(--radius-full);
-  border: var(--border-w) solid #1f2937; /* volontairement distinct: cadre perceptible */
-  background: linear-gradient(180deg, #323842, #323842); /* neutre sombre */
-  color: #fff;
-  cursor: pointer;
-  font: 600 var(--btn-fs)/1 var(--font-accent);
-  transition: transform var(--t-fast) var(--ease),
-              border-color var(--t-med) var(--ease),
-              background var(--t-med) var(--ease),
-              color var(--t-med) var(--ease),
-              box-shadow var(--t-med) var(--ease);
+  display:inline-flex; align-items:center; gap:8px; height:var(--btn-h);
+  padding:0 var(--btn-px); border-radius:var(--radius-full);
+  border:var(--border-w) solid var(--cta-border);
+  background: linear-gradient(180deg, var(--cta-bg), var(--cta-bg));
+  color: var(--cta-text);
+  cursor:pointer; font:600 var(--btn-fs)/1 var(--font-accent);
+  transition:transform var(--t-fast) var(--ease), background var(--t-med) var(--ease), color var(--t-med) var(--ease);
 }
-
-/* Lien Tipeee : pas de soulignement, texte blanc dans tous les états */
 .tipeeechat-container-wrap .tipeeechat-button,
 .tipeeechat-container-wrap .tipeeechat-button:link,
 .tipeeechat-container-wrap .tipeeechat-button:visited,
 .tipeeechat-container-wrap .tipeeechat-button:hover,
 .tipeeechat-container-wrap .tipeeechat-button:focus,
-.tipeeechat-container-wrap .tipeeechat-button:active {
-  text-decoration: none !important;
-  color: #fff !important;
-  outline: none !important;
-  box-shadow: none;
+.tipeeechat-container-wrap .tipeeechat-button:active{
+  text-decoration:none; color:var(--cta-text); outline:0; box-shadow:none;
 }
+.tipeeechat-button img{ display:block; height:calc(var(--btn-h) - 14px); width:auto; }
+@media (max-width:600px){ .tipeeechat-container-wrap{ bottom:72px; left:16px; } }
 
-.tipeeechat-button img{
-  display:block;
-  height: calc(var(--btn-h) - 14px); /* marge visuelle haut/bas */
-  width:auto;
-}
-
-@media (max-width:480px){
-  .tipeeechat-container-wrap{ bottom: 72px; right: 12px; } /* Option A mobile */
-  /* ou: left:12px; bottom:128px; (Option B) */
-}
-
-
-/* ======= Alléger la zone principale (contenu) ======= */
-
-/* 1) Nouvelles variables (tu peux les remonter dans :root si tu préfères) */
-:root{
-  /* Surface du contenu (un ton + clair que --bg) */
-  --content-bg: #2b2b31;           /* + clair = plus lisible, - “mastoc” */
-  --content-border: #3a3f46;       /* liseré très discret */
-  --content-radius: 12px;          /* coins doux */
-  --content-shadow: 0 8px 24px rgba(0,0,0,.28);
-
-  /* Rythme du texte (un peu plus aéré) */
-  --content-padding-x: 28px;
-  --content-padding-y: 24px;
-  --leading: 1.65;
-}
-
-/* 2) Conteneur principal : créer un “carton” lisible */
-.wy-nav-content{
-  background: var(--content-bg) !important;
-  border: 1px solid var(--content-border);
-  border-radius: var(--content-radius);
-  padding: var(--content-padding-y) var(--content-padding-x);
-  box-shadow: var(--content-shadow);
-}
-
-/* 3) Respirations & lisibilité du corps de texte */
-.rst-content,
-.rst-content p,
-.rst-content li{
-  line-height: var(--leading);
-}
-
-/* 4) Harmoniser les éléments embarqués (code/table/notes) avec la nouvelle surface */
-.highlight, .rst-content pre{
-  background: color-mix(in srgb, var(--content-bg) 88%, black 12%); /* un poil plus sombre */
-}
-.rst-content code.literal{
-  background: color-mix(in srgb, var(--content-bg) 82%, black 18%);
-}
-.rst-content table.docutils{
-  background: color-mix(in srgb, var(--content-bg) 92%, white 8%);
-}
-.rst-content table.docutils th{
-  background: color-mix(in srgb, var(--content-bg) 80%, black 20%);
-}
-.rst-content .admonition, .rst-content .note, .rst-content .warning{
-  background: color-mix(in srgb, var(--content-bg) 90%, white 10%);
-  border-color: var(--content-border);
-}
-
-/* 1) Mobile : adoucir la “carte” et éviter les débords */
-@media (max-width: 980px){
-  .wy-nav-content{
-    border-radius: 10px;
-    padding: 18px 16px;
-    box-shadow: 0 6px 18px rgba(0,0,0,.22);
-  }
-}
-
-/* 2) Impression : fond neutre et texte lisible */
-@media print{
-  html, body,
-  .wy-body-for-nav,
-  .wy-grid-for-nav,
-  .wy-nav-content-wrap{ background:#fff !important; }
-  .wy-nav-content{
-    background:#fff !important;
-    border: 1px solid #ddd;
-    box-shadow: none;
-  }
-  .rst-content, .rst-content p, .rst-content li{ color:#111 !important; }
-}
-
-
-/* --- RTD mobile top bar (remplace le bleu) --- */
+/* ------------------ Barre top mobile RTD ------------------ */
 .wy-nav-top{
-  background: var(--side) !important;            /* ex: #1a1a1d */
-  color: var(--side-text) !important;            /* ex: #e5e7eb */
-  border-bottom: 1px solid var(--side-border) !important;
-  box-shadow: none !important;
+  background:var(--side); color:var(--side-text);
+  border-bottom:1px solid var(--side-border); box-shadow:none;
 }
-.wy-nav-top a,
-.wy-nav-top a:visited,
-.wy-nav-top .icon,
-.wy-nav-top i{
-  color: var(--side-text-strong) !important;     /* ex: #fff */
-  text-decoration: none !important;
+.wy-nav-top a, .wy-nav-top a:visited, .wy-nav-top .icon, .wy-nav-top i{
+  color:var(--side-text-strong); text-decoration:none;
 }
 
-
-/* (Optionnel) Si tu veux vraiment très léger : remonte la luminosité d’un cran */
-:root.light-dark{
-  --content-bg:#18202b;    /* + clair */
-  --content-border:#2a3440;
-  --content-shadow: 0 8px 28px rgba(0,0,0,.25);
-}
-
-
-/* ===== Fix Firefox/RTD : fond blanc ===== */
-
-html, body{
-  background: var(--bg) !important;
-}
-
-/* Couches RTD qui réimposent un fond clair */
-.wy-body-for-nav,
-.wy-grid-for-nav,
-.wy-nav-content-wrap{
-  background: var(--bg) !important;
-  background-image: none !important;   /* au cas où le thème ajoute un dégradé */
-  min-height: 100vh;                   /* évite la “marche” blanche en bas */
-}
-
-/* Ta carte de contenu reste sur sa surface */
-.wy-nav-content{
-  background: var(--content-bg) !important;
-  border: 1px solid var(--content-border);
-  border-radius: var(--content-radius);
-  padding: var(--content-padding-y) var(--content-padding-x);
-  box-shadow: var(--content-shadow);
-}
-
-/* Optionnel : sécuriser aussi quand RTD met des wrappers internes */
-.wy-nav-content .rst-content,
-.document{
-  background: transparent !important;
+/* ------------------ Impression ------------------ */
+@media print{
+  html,body,.wy-body-for-nav,.wy-grid-for-nav,.wy-nav-content-wrap{ background:var(--print-bg) !important; }
+  .wy-nav-content{ background:var(--print-bg) !important; border:1px solid var(--print-border); box-shadow:none; }
+  .rst-content, .rst-content p, .rst-content li{ color:var(--print-ink) !important; }
 }
