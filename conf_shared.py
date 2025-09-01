@@ -19,10 +19,8 @@ extensions = [
     "sphinx.ext.todo",
     "sphinx.ext.intersphinx",
     "sphinx.ext.napoleon",
-    "sphinxcontrib.bibtex",
 ]
 
-bibtex_bibfiles = ["references.bib"]
 intersphinx_mapping = {
     "python": ("https://docs.python.org/3", None),
     "numpy": ("https://numpy.org/doc/stable/", None),
